@@ -1,0 +1,25 @@
+{
+  "templates": [
+    {
+      "name": "torneo-frm",
+      "urls": [
+        "https://www.realmadrid.com/StaticFiles/RealMadrid/landings/torneo_frm/index.html"
+      ],
+      "description": "Real Madrid Foundation Tournament landing page with hero, sections for rules, schedule, location, contact, and FAQs",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "div.principal.visible"
+          ]
+        },
+        {
+          "name": "embed",
+          "instances": [
+            "div#comollegar iframe"
+          ]
+        }
+      ]
+    }
+  ]
+}
