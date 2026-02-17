@@ -286,3 +286,14 @@ main .section.dark {
 main .section.dark a:any-link {
   color: #fff;
 }
+
+/* section decorative illustrations */
+.section-illustration {
+  text-align: center;
+  margin: 0 auto 16px;
+}
+
+.section-illustration img {
+  max-width: 300px;
+  height: auto;
+}

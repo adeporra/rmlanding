@@ -45,6 +45,33 @@ async function loadFonts() {
 }
 
 /**
+ * Adds decorative SVG illustrations before specific sections.
+ * @param {Element} main The container element
+ */
+function buildSectionIllustrations(main) {
+  const illustrations = {
+    concepto: 'concepto-illustration',
+    localización: 'localizacion-illustration',
+    contacto: 'contacto-illustration',
+  };
+
+  Object.entries(illustrations).forEach(([sectionId, svgName]) => {
+    const heading = main.querySelector(`h2#${sectionId}`);
+    if (heading) {
+      const img = document.createElement('img');
+      img.src = `${window.hlx.codeBasePath}/icons/${svgName}.svg`;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.classList.add('section-illustration');
+      const wrapper = document.createElement('p');
+      wrapper.classList.add('section-illustration');
+      wrapper.append(img);
+      heading.before(wrapper);
+    }
+  });
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -69,6 +96,7 @@ function buildAutoBlocks(main) {
     }
 
     buildHeroBlock(main);
+    buildSectionIllustrations(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
