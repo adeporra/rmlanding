@@ -52,11 +52,14 @@ export default function decorate(block) {
       if (h1) container.append(h1);
     }
 
-    // Add any pictures (like logo) from content row
+    // Add any pictures (like logo/crest) from content row
     pictures.forEach((pic) => {
       const img = pic.querySelector('img');
-      if (img && img.alt && img.alt.toLowerCase().includes('logo')) {
-        pic.className = 'hero-logo';
+      if (img && img.alt) {
+        const alt = img.alt.toLowerCase();
+        if (alt.includes('logo') || alt.includes('escudo') || alt.includes('crest') || alt.includes('badge')) {
+          pic.className = 'hero-logo';
+        }
       }
       container.append(pic);
     });
