@@ -72,6 +72,48 @@ function buildSectionIllustrations(main) {
 }
 
 /**
+ * Builds the fixed bottom section nav and hides toggled sections initially.
+ * Sections are identified by their h2 heading IDs.
+ * @param {Element} main The container element
+ */
+function buildSectionNav(main) {
+  const navItems = [
+    { text: 'Home', target: 'home', icon: 'nav-home' },
+    { text: 'Reglamento', target: 'reglamento', icon: 'nav-reglamento' },
+    { text: 'Horarios', target: 'horarios', icon: 'nav-horarios' },
+    { text: 'Clasificación', target: 'clasificación', icon: 'nav-clasificacion' },
+    { text: "FAQ's", target: 'faqs', icon: 'nav-faqs' },
+  ];
+  const toggledIds = ['reglamento', 'horarios', 'clasificación', 'faqs'];
+
+  // Hide toggled sections before they render (prevents flash)
+  toggledIds.forEach((id) => {
+    const heading = main.querySelector(`h2#${CSS.escape(id)}`);
+    if (heading) {
+      let sectionDiv = heading;
+      while (sectionDiv.parentElement && sectionDiv.parentElement !== main) {
+        sectionDiv = sectionDiv.parentElement;
+      }
+      sectionDiv.style.display = 'none';
+      sectionDiv.dataset.toggledSection = id;
+    }
+  });
+
+  // Create nav block with links and icon data
+  const rows = navItems.map(({ text, target, icon }) => {
+    const a = document.createElement('a');
+    a.href = `#${target}`;
+    a.textContent = text;
+    a.dataset.icon = icon;
+    return [a];
+  });
+
+  const section = document.createElement('div');
+  section.append(buildBlock('section-nav', rows));
+  main.append(section);
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -97,6 +139,7 @@ function buildAutoBlocks(main) {
 
     buildHeroBlock(main);
     buildSectionIllustrations(main);
+    buildSectionNav(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

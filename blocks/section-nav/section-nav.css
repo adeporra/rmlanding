@@ -1,0 +1,81 @@
+/* Section Nav - fixed bottom navigation bar */
+.section-nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+}
+
+.section-nav-container .section-nav-wrapper {
+  max-width: unset;
+  padding: 0;
+  margin: 0;
+}
+
+.section-nav {
+  width: 100%;
+  max-width: unset;
+  margin: 0;
+  padding: 0;
+}
+
+.section-nav .section-nav-bar {
+  background-color: var(--background-color);
+  border-top: 3px solid var(--accent-color);
+}
+
+.section-nav .section-nav-bar ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.section-nav .section-nav-bar li {
+  flex: 1;
+  text-align: center;
+}
+
+.section-nav .section-nav-bar a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--dark-color);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.section-nav .section-nav-bar a img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.section-nav .section-nav-bar a span {
+  white-space: nowrap;
+}
+
+.section-nav .section-nav-bar a.active {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.section-nav .section-nav-bar a:hover {
+  color: var(--link-color);
+}
+
+/* Add bottom padding to body so content isn't hidden behind fixed nav */
+body.appear {
+  padding-bottom: 80px;
+}
