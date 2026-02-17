@@ -72,6 +72,48 @@ function buildSectionIllustrations(main) {
 }
 
 /**
+ * Replaces social media text links with icon images.
+ * @param {Element} main The container element
+ */
+function buildSocialIcons(main) {
+  const socialMap = {
+    facebook: 'facebook',
+    twitter: 'twitter',
+    instagram: 'instagram',
+  };
+
+  Object.entries(socialMap).forEach(([domain, iconName]) => {
+    const link = main.querySelector(`a[href*="${domain}"]`);
+    if (link) {
+      const img = document.createElement('img');
+      img.src = `${window.hlx.codeBasePath}/icons/${iconName}.svg`;
+      img.alt = link.textContent.trim();
+      img.loading = 'lazy';
+      img.classList.add('social-icon');
+      link.textContent = '';
+      link.append(img);
+      link.classList.add('social-link');
+    }
+  });
+
+  // Remove the " | " separators between social links
+  const contactHeading = main.querySelector('h2#contacto');
+  if (contactHeading) {
+    let sectionDiv = contactHeading;
+    while (sectionDiv.parentElement && sectionDiv.parentElement !== main) {
+      sectionDiv = sectionDiv.parentElement;
+    }
+    const socialParagraph = sectionDiv.querySelector('p:has(.social-link)');
+    if (socialParagraph) {
+      socialParagraph.classList.add('social-links');
+      [...socialParagraph.childNodes].forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) node.remove();
+      });
+    }
+  }
+}
+
+/**
  * Builds the fixed bottom section nav and hides toggled sections initially.
  * Sections are identified by their h2 heading IDs.
  * @param {Element} main The container element
@@ -139,6 +181,7 @@ function buildAutoBlocks(main) {
 
     buildHeroBlock(main);
     buildSectionIllustrations(main);
+    buildSocialIcons(main);
     buildSectionNav(main);
   } catch (error) {
     // eslint-disable-next-line no-console

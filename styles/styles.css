@@ -297,3 +297,20 @@ main .section.dark a:any-link {
   max-width: 300px;
   height: auto;
 }
+
+/* social media icon links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-link {
+  display: inline-block;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
