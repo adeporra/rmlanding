@@ -16,6 +16,10 @@
   color: var(--background-color);
 }
 
+.hero .hero-content {
+  text-align: left;
+}
+
 .hero picture {
   position: absolute;
   z-index: -1;
@@ -30,8 +34,48 @@
   height: 100%;
 }
 
+.hero .hero-logo {
+  max-width: 200px;
+}
+
+.hero .hero-logo img {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+/* Gold accent bar for default content following the hero block */
+.hero-container > .default-content-wrapper {
+  background-color: var(--accent-color);
+  color: var(--accent-text-color);
+  padding: 20px 24px;
+  text-align: center;
+  max-width: unset;
+}
+
+.hero-container > .default-content-wrapper h5 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--accent-text-color);
+  text-align: center;
+}
+
+.hero-container > .default-content-wrapper p {
+  color: var(--accent-text-color);
+  text-align: center;
+}
+
+.hero-container > .default-content-wrapper a:any-link {
+  color: var(--accent-text-color);
+  text-decoration: underline;
+}
+
 @media (width >= 900px) {
   .hero {
     padding: 40px 32px;
+  }
+
+  .hero-container > .default-content-wrapper {
+    padding: 20px 32px;
   }
 }
