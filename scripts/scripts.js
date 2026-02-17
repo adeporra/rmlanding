@@ -53,10 +53,14 @@ function buildSectionIllustrations(main) {
     concepto: 'concepto-illustration',
     localización: 'localizacion-illustration',
     contacto: 'contacto-illustration',
+    reglamento: 'reglamento-illustration',
+    horarios: 'horarios-illustration',
+    clasificación: 'clasificacion-illustration',
+    faqs: 'faqs-illustration',
   };
 
   Object.entries(illustrations).forEach(([sectionId, svgName]) => {
-    const heading = main.querySelector(`h2#${sectionId}`);
+    const heading = main.querySelector(`h2#${CSS.escape(sectionId)}`);
     if (heading) {
       const img = document.createElement('img');
       img.src = `${window.hlx.codeBasePath}/icons/${svgName}.svg`;
