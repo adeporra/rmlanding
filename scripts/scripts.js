@@ -16,7 +16,7 @@ import {
 import runExperimentation from './experiment-loader.js';
 
 const experimentationConfig = {
-  prodHost: 'experimentation--rmlanding--adeporra.aem.page/', // add your prodHost here, otherwise we will show mock data
+  prodHost: 'experimentation--rmlanding--adeporra.aem.page', // add your prodHost here, otherwise we will show mock data
   audiences: {
     mobile: () => window.innerWidth < 600,
     desktop: () => window.innerWidth >= 600,
