@@ -11,7 +11,7 @@ const isExperimentationEnabled = () => document.head.querySelector('[name^="expe
  * @param {Object} config The experimentation configuration.
  * @returns {Promise<void>} A promise that resolves when the experimentation module is loaded.
  */
-export default async function runExperimentation(document, config) {
+export async function runExperimentation(document, config) {
   if (!isExperimentationEnabled()) {
     window.addEventListener('message', async (event) => {
       if (event.data?.type === 'hlx:experimentation-get-config') {
@@ -27,7 +27,7 @@ export default async function runExperimentation(document, config) {
 
   try {
     const { loadEager } = await import(
-      '@adobe/aem-experimentation/src/index.js'
+      '../../plugins/experimentation/src/index.js'
     );
     return loadEager(document, config);
   } catch (error) {
