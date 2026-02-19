@@ -1,6 +1,6 @@
 import {
   runExperimentation,
-} from './experiment-loader.js';
+} from '../experiment-loader.js';
 
 const experimentationConfig = {
   prodHost: 'www.mysite.com', // add your prodHost here, otherwise we will show mock data
@@ -10,7 +10,6 @@ const experimentationConfig = {
     // define your custom audiences here as needed
   },
 };
-
 import {
   buildBlock,
   loadHeader,
@@ -233,9 +232,7 @@ async function loadEager(doc) {
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
-  
   await runExperimentation(doc, experimentationConfig);
-  
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
