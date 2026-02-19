@@ -15,7 +15,7 @@ import {
 
 import {
   runExperimentation,
-} from '../plugins/experimentation/experiment-loader.js';
+} from './experiment-loader.js';
 
 const experimentationConfig = {
   prodHost: 'www.mysite.com', // add your prodHost here, otherwise we will show mock data
