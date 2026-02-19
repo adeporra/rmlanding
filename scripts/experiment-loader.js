@@ -27,7 +27,7 @@ export async function runExperimentation(document, config) {
 
   try {
     const { loadEager } = await import(
-      '../plugins/experimentation/src/index.js'
+      '@adobe/aem-experimentation/src/index.js'
     );
     return loadEager(document, config);
   } catch (error) {
