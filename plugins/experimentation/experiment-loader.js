@@ -18,7 +18,7 @@ export async function runExperimentation(document, config) {
         event.source.postMessage({
           type: 'hlx:experimentation-config',
           config: { experiments: [], audiences: [], campaigns: [] },
-          source: 'no-experiments'
+          source: 'no-experiments',
         }, '*');
       }
     });
@@ -27,7 +27,7 @@ export async function runExperimentation(document, config) {
 
   try {
     const { loadEager } = await import(
-      '../src/index.js'
+      './plugins/experimentation/src/index.js'
     );
     return loadEager(document, config);
   } catch (error) {
