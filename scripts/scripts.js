@@ -1,4 +1,17 @@
 import {
+  runExperimentation,
+} from './experiment-loader.js';
+
+const experimentationConfig = {
+  prodHost: 'www.mysite.com', // add your prodHost here, otherwise we will show mock data
+  audiences: {
+    mobile: () => window.innerWidth < 600,
+    desktop: () => window.innerWidth >= 600,
+    // define your custom audiences here as needed
+  },
+};
+
+import {
   buildBlock,
   loadHeader,
   loadFooter,
