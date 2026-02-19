@@ -13,9 +13,7 @@ import {
   loadCSS,
 } from './aem.js';
 
-import {
-  runExperimentation,
-} from './experiment-loader.js';
+import runExperimentation from './experiment-loader.js';
 
 const experimentationConfig = {
   prodHost: 'experimentation--rmlanding--adeporra.aem.page/', // add your prodHost here, otherwise we will show mock data
@@ -264,24 +262,6 @@ async function loadLazy(doc) {
   loadFonts();
 }
 
-/**
- * Loads everything that happens a lot later,
- * without impacting the user experience.
- */
-function loadDelayed() {
-  // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
-  // load anything that can be postponed to the latest here
-}
-
-async function loadPage() {
-  await loadEager(document);
-  await loadLazy(document);
-  loadDelayed();
-}
-
-loadPage();
-
 async function loadSidekick() {
   if (document.querySelector('aem-sidekick')) {
     import('./sidekick.js');
@@ -292,6 +272,25 @@ async function loadSidekick() {
     import('./sidekick.js');
   });
 }
+
+/**
+ * Loads everything that happens a lot later,
+ * without impacting the user experience.
+ */
+function loadDelayed() {
+  // eslint-disable-next-line import/no-cycle
+  window.setTimeout(() => import('./delayed.js'), 3000);
+  // load anything that can be postponed to the latest here
+  loadSidekick();
+}
+
+async function loadPage() {
+  await loadEager(document);
+  await loadLazy(document);
+  loadDelayed();
+}
+
+loadPage();
 
 (async function loadDa() {
   const { searchParams } = new URL(window.location.href);
