@@ -13,6 +13,17 @@ import {
   loadCSS,
 } from './aem.js';
 
+import runExperimentation from './experiment-loader.js';
+
+const experimentationConfig = {
+  prodHost: 'experimentation--rmlanding--adeporra.aem.page', // add your prodHost here, otherwise we will show mock data
+  audiences: {
+    mobile: () => window.innerWidth < 600,
+    desktop: () => window.innerWidth >= 600,
+    // define your custom audiences here as needed
+  },
+};
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -220,7 +231,7 @@ async function loadEager(doc) {
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
-
+  await runExperimentation(doc, experimentationConfig);
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
@@ -251,6 +262,17 @@ async function loadLazy(doc) {
   loadFonts();
 }
 
+async function loadSidekick() {
+  if (document.querySelector('aem-sidekick')) {
+    import('./sidekick.js');
+    return;
+  }
+
+  document.addEventListener('sidekick-ready', () => {
+    import('./sidekick.js');
+  });
+}
+
 /**
  * Loads everything that happens a lot later,
  * without impacting the user experience.
@@ -259,6 +281,7 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
+  loadSidekick();
 }
 
 async function loadPage() {
@@ -268,3 +291,16 @@ async function loadPage() {
 }
 
 loadPage();
+
+(async function loadDa() {
+  const { searchParams } = new URL(window.location.href);
+
+  /* eslint-disable import/no-unresolved */
+  if (searchParams.get('dapreview')) {
+    import('https://da.live/scripts/dapreview.js')
+      .then(({ default: daPreview }) => daPreview(loadPage));
+  }
+  if (searchParams.get('daexperiment')) {
+    import('https://da.live/nx/public/plugins/exp/exp.js');
+  }
+}());
