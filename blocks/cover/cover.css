@@ -1,0 +1,98 @@
+/* Cover block — full-width hero-style cover with gold gradient */
+.cover-container .cover-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.cover {
+  display: flex;
+  align-items: flex-start;
+  background: linear-gradient(to right, #96712e, #d4a94f);
+  color: #fff;
+  padding: 48px 24px 56px;
+  min-height: 320px;
+}
+
+.cover .cover-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.cover .cover-eyebrow {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.cover h1 {
+  margin: 8px 0 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.cover .cover-badge {
+  display: inline-block;
+  align-self: flex-start;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #fff;
+}
+
+@media (width >= 600px) {
+  .cover {
+    padding: 56px 32px 64px;
+    min-height: 400px;
+  }
+
+  .cover .cover-eyebrow {
+    font-size: 20px;
+  }
+
+  .cover h1 {
+    font-size: 60px;
+  }
+
+  .cover .cover-badge {
+    font-size: 34px;
+    padding: 14px 32px;
+  }
+}
+
+@media (width >= 900px) {
+  .cover {
+    padding: 72px 40px 80px;
+    min-height: 500px;
+  }
+
+  .cover .cover-eyebrow {
+    font-size: 22px;
+  }
+
+  .cover h1 {
+    font-size: 72px;
+    margin: 12px 0 24px;
+  }
+
+  .cover .cover-badge {
+    font-size: 40px;
+    padding: 16px 40px;
+    border-radius: 12px;
+  }
+}
