@@ -24,10 +24,10 @@
 
 .cover .cover-eyebrow {
   margin: 0;
-  font-family: var(--body-font-family);
+  font-family: "RM Neue", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 22px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #fff;
@@ -36,7 +36,7 @@
 
 .cover h1 {
   margin: 8px 0 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "RM Neue", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 48px;
   line-height: 1.1;
@@ -49,9 +49,9 @@
   border: 3px solid #fff;
   border-radius: 12px;
   padding: 14px 28px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "RM Neue", Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 36px;
   color: #fff;
 }
 
@@ -62,15 +62,15 @@
   }
 
   .cover .cover-eyebrow {
-    font-size: 20px;
+    font-size: 34px;
   }
 
   .cover h1 {
-    font-size: 60px;
+    font-size: 80px;
   }
 
   .cover .cover-badge {
-    font-size: 40px;
+    font-size: 56px;
     padding: 18px 40px;
   }
 }
@@ -82,17 +82,39 @@
   }
 
   .cover .cover-eyebrow {
-    font-size: 22px;
+    font-size: 44px;
   }
 
   .cover h1 {
-    font-size: 72px;
+    font-size: 110px;
     margin: 12px 0 24px;
   }
 
   .cover .cover-badge {
-    font-size: 60px;
+    font-size: 82px;
     padding: 22px 56px;
     border-radius: 16px;
+  }
+}
+
+@media (width >= 1200px) {
+  .cover {
+    padding: 80px 48px 96px;
+    min-height: 600px;
+  }
+
+  .cover .cover-eyebrow {
+    font-size: 68px;
+  }
+
+  .cover h1 {
+    font-size: 160px;
+    margin: 16px 0 32px;
+  }
+
+  .cover .cover-badge {
+    font-size: 124px;
+    padding: 24px 64px;
+    border-radius: 20px;
   }
 }
