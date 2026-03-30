@@ -46,7 +46,7 @@
 .cover .cover-badge {
   display: inline-block;
   align-self: flex-start;
-  border: 3px solid #fff;
+  border: 5px solid #fff;
   border-radius: 12px;
   padding: 10px 48px;
   font-family: "RM Neue", Arial, Helvetica, sans-serif;
